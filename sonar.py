@@ -5,47 +5,47 @@ import math
 
 
 def GetNewBoard():
-    board=[]
+    board = []
     for x in range(60):
         board.append([])
-        for y in range(15):
-            if random.randint(0,1)==0:
-                board.append('~')
+        for _ in range(15):
+            if random.randint(0,1) == 0:
+                board[x].append('~')
             else:
-                board.append('`')
+                board[x].append('`')
     return board
 
 
 def DrawBoard(board):
-    tensdigline='    '
+    tensdigline = '    '
     for i in range(1,6):
-        tensdigline+=(' '*9)+str(i)
+        tensdigline += (' '*9)+str(i)
 
     print(tensdigline)
-    print('   '+('0123456789'*6))
+    print('   ' + ('0123456789'*6))
     print()
 
     for row in range(15):
-        if row<10:
-            extraspace=' '
+        if row < 10:
+            extraspace = ' '
         else:
-            extraspace=''
+            extraspace = ''
 
-        boardrow=''
+        boardrow = ''
         for column in range(60):
-            boardrow+=board[column][row]
+            boardrow += board[column][row]
 
         print('%s%s %s %s'%(extraspace,row,boardrow,row))
 
     print()
-    print('   '+('0123456789'*6))
+    print('   ' + ('0123456789'*6))
     print(tensdigline)
 
 
 def GetRandomChests(numchests):
-    chests=[]
-    while len(chests)<numchests:
-        newchest=[random.randint(0,59),random.randint(0,14)]
+    chests = []
+    while len(chests) < numchests:
+        newchest = [random.randint(0,59),random.randint(0,14)]
         if newchest not in chests:
             chests.append(newchest)
     return chests
